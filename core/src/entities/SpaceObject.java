@@ -1,7 +1,5 @@
 package entities;
 
-import com.Scroller.game.Game;
-
 public class SpaceObject {
 	
 	protected float x;
@@ -20,10 +18,10 @@ public class SpaceObject {
 	protected float[] shapex;
 	protected float[] shapey;
 	
-	protected void wrap(){
+	/*protected void wrap(){
 		if(x < 0) x = Game.WIDTH;
 		if(x > Game.WIDTH) x = 0;
 		if(y < 0) y = Game.HEIGHT;
 		if(y > Game.HEIGHT) y = 0;
-	}
+	}*/
 }

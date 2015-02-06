@@ -42,6 +42,7 @@ public class Playstate extends GameState{
 		player.setLeft(GameKeys.isDown(GameKeys.LEFT));
 		player.setRight(GameKeys.isDown(GameKeys.RIGHT));
 		player.setUp(GameKeys.isDown(GameKeys.UP));
+		player.setDown(GameKeys.isDown(GameKeys.DOWN));
 	}
 
 	public void dispose() {

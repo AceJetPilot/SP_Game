@@ -10,6 +10,7 @@ public class Player extends SpaceObject {
 	private boolean left;
 	private boolean right;
 	private boolean up;
+	private boolean down;
 	
 	private float maxSpeed;
 	private float acceleration; 
@@ -20,14 +21,14 @@ public class Player extends SpaceObject {
 		y = Game.HEIGHT/2;
 		
 		maxSpeed = 300;
-		acceleration = 200;
-		deceleration = 10;
+		acceleration = 300;
+		deceleration = 70;
 		
 		shapex = new float[4];
 		shapey = new float[4];
 		
-		radians = 3.1415f / 2;
-		rotationSpeed = 3;
+		//radians = 3.1415f / 2;
+		//rotationSpeed = 3;
 		
 	}
 	
@@ -45,22 +46,31 @@ public class Player extends SpaceObject {
 		shapey[3] = y + MathUtils.sin(radians + 4 * 3.1415f / 5) * 8;
 	}
 	
-	public void setLeft(boolean b){if(b)System.out.println("Left"); left = b;}
+	public void setLeft(boolean b){left = b;}
 	public void setRight(boolean b){right = b;}
-	public void setUp(boolean b){if(b)System.out.println("UP"); up = b;}
+	public void setUp(boolean b){up = b;}
+	public void setDown(boolean b){down = b;}
 	
 	public void update(float dt){
 		//turning
-		if(left){
-			radians += rotationSpeed * dt;
+		if(up){
+			//radians += rotationSpeed * dt;
+			dx += MathUtils.cos(3.1415f/2) * acceleration * dt;
+			dy += MathUtils.sin(2.1415f/2) * acceleration * dt;
 		}
-		else if(right){
-			radians -= rotationSpeed * dt;
+		if(down){
+			//radians -= rotationSpeed * dt;
+			dx -= MathUtils.cos(3.1415f/2) * acceleration * dt;
+			dy -= MathUtils.sin(2.1415f/2) * acceleration * dt;
 		}
 		//Acceleration
-		if(up){
+		if(right){
 			dx += MathUtils.cos(radians) * acceleration * dt;
 			dy += MathUtils.sin(radians) * acceleration * dt;
+		}
+		if(left){
+			dx -= MathUtils.cos(radians) * acceleration * dt;
+			dy -= MathUtils.sin(radians) * acceleration * dt;
 		}
 		//deceleration
 		float vec = (float) Math.sqrt(dx * dx + dy * dy);
@@ -81,7 +91,7 @@ public class Player extends SpaceObject {
 		setShape();
 		
 		//screen wrap
-		wrap();
+		//wrap();
 	}
 	
 	
